@@ -1,0 +1,245 @@
+\documentclass[10pt]{beamer}
+\usetheme{Pittsburgh}%Penguins
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage{colortbl}
+\setbeamertemplate{caption}[numbered]
+
+%Information to be included in the title page:
+\title{Индивидуальная работа по курсу ТПР}
+\subtitle{Часть 3}
+\author{Сухоловский Дмитрий}
+\institute{Южный Федеральный Университет}
+\date{2017}
+
+
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Задание}
+  \begin{enumerate}
+    \item Найти наилучшую альтернативу, используя заданные в варианте методы анализа коллективных решений.
+    \item Сравнить полученные результаты, сделать выводы. Сформулировать рекомендации ЛПР по итоговому решению.
+  \end{enumerate}
+  Исходные данные голосования приведены в таблице \ref{t1}.
+\end{frame}
+
+\begin{frame}
+\frametitle{Исходные данные}
+  \begin{table}
+    \caption{Результаты голосования}
+    \label{t1}
+    \begin{tabular}{|c|c|}
+      \hline
+      Число голосов & Варианты упорядочивания проектов \\
+      \hline
+      20	&  A $\succ$ B $\succ$ C $\succ$ D \\
+      50	&  A $\succ$ B $\succ$ D $\succ$ C \\
+      2	  &  A $\succ$ C $\succ$ B $\succ$ D \\
+      3	  &  A $\succ$ C $\succ$ D $\succ$ B \\
+      12	&  A $\succ$ D $\succ$ B $\succ$ C \\
+      34	&  B $\succ$ A $\succ$ D $\succ$ C \\
+      30	&  B $\succ$ C $\succ$ D $\succ$ A \\
+      18	&  C $\succ$ A $\succ$ D $\succ$ B \\
+      41	&  C $\succ$ D $\succ$ A $\succ$ B \\
+      21	&  D $\succ$ A $\succ$ C $\succ$ B \\
+      32	&  C $\succ$ B $\succ$ A $\succ$ D \\
+      6	  &  D $\succ$ B $\succ$ A $\succ$ C \\
+      15	&  D $\succ$ B $\succ$ C $\succ$ A \\
+      15	&  D $\succ$ C $\succ$ A $\succ$ B \\
+      1	  &  D $\succ$ C $\succ$ B $\succ$ A \\
+      \hline
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Процедура Борда}
+\begin{columns}
+  \column{0.5\textwidth}
+    Для начала рассчитаем попарные предпочтения кандидатов g(A,B), т.е. количество голосовавших, предпочитающих Вариант А варианту B для каждого проекта.
+  \column{0.5\textwidth}
+  g(A,B) = 182 \quad  g(B,A) = 118\\
+  g(A,C) = 148 \quad  g(C,A) = 152\\
+  g(A,D) = 171 \quad  g(D,A) = 129\\
+  g(B,C) = 167 \quad  g(C,B) = 133\\
+  g(B,D) = 168 \quad  g(D,B) = 132\\
+  g(C,D) = 146 \quad  g(D,C) = 154\\
+\end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Процедура Борда}
+  \framesubtitle{(продолжение)}
+  \begin{columns}
+    \column{0.5\textwidth}
+    Для каждого проекта рассчитаем значение модифицированной функции Борда по формуле:
+
+    \begin{equation*}
+      f_{BM}(A_{i})=\sum\limits_{j}[\,g(A_{i},A_{j})-g(A_{j},A_{i})]\,
+    \end{equation*}
+
+    Победителем становится тот, у кого она больше.
+
+    \column{0.5\textwidth}
+    Результаты:\\
+    А = 102\\
+    B = 6\\
+    C = -38\\
+    D = -70\\
+    \textbf{Победителем стал проект А.}
+
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Процедура Фишберна}
+  \begin{columns}
+  \column{0.5\textwidth}
+
+  \begin{table}
+    \caption{Матрица парных сравнений альтернатив}
+    \label{t2}
+    \begin{tabular}{|c|c|c|c|c|c|}
+      \hline
+        &\textbf{A} &	\textbf{B} &	\textbf{C} &	\textbf{D} &	\textbf{Sum}\\
+        \hline
+      \textbf{A} & 0 &	1 &	0 &	1 &	\cellcolor{yellow}2\\
+      \textbf{B} & 0 &	0 &	1 &	0 &	1\\
+      \textbf{C} & 1 &	0 &	0 &	0 &	1\\
+      \textbf{D} & 0 &	1 &	1 &	0 &	\cellcolor{yellow}2\\
+      \hline
+    \end{tabular}
+  \end{table}
+  \column{0.5\textwidth}
+  Согласно этой процедуре победителем станет тот, кто превзойдет соперников при попарных сравнениях большее число раз.
+
+  Занесем результаты сравнений в таблицу \ref{t2}, элементы которой равны единице, если $g(i,j)>g(j,i)$ и нулю в противном случае.
+
+  \textbf{Победителями стали A и D.}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Процедура Доджсона}
+  \begin{columns}
+    \column{0.6\textwidth}
+    \begin{table}
+      \caption{Вспомогательная матрица}
+      \label{t3}
+      \def\arraystretch{1.5}
+      \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $H$ &	\textbf{A} &	\textbf{B} &	\textbf{C} &	\textbf{D} \\
+        \hline
+        \textbf{A} &	$1       $& 	$1  \frac{32}{59}$& 	  $\frac{37}{38}$ &	$ 1 \frac{14}{43}$\\
+        \hline
+        \textbf{B} &	 $\frac{59}{91}$&	$1$ & $1\frac{34}{133}$ &	$1 \frac{3}{11}$\\
+        \hline
+        \textbf{C} & $1\frac{1}{37}$ & 	 $\frac{133}{167}$ &	$1$  &	  $\frac{73}{77}$ \\
+        \hline
+        \textbf{D} &	  $\frac{43}{57}$ &	  $\frac{11}{14}$ 	& $1$   $\frac{4}{73}$ 	& $1$        \\
+          \hline
+      \end{tabular}
+    \end{table}
+    \column{0.4\textwidth}
+    Для этой процедуры нам понадобится вспомогательная матрица (Таблица \ref{t3}), элементы которой рассчитываются по формуле:
+
+    \begin{equation*}
+      h_{i,j} = \frac{g(A_{i}, A_{j})}{g(A_{j}, A_{i})}
+    \end{equation*}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Процедура Доджсона}
+  \framesubtitle{(продолжение)}
+  \begin{columns}
+    \column{0.6\textwidth}
+    \begin{table}
+      \caption{Матрица недостающих голосов}
+      \label{t4}
+      \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+            & \textbf{A}  & \textbf{B}  & \textbf{C} & \textbf{D} & \textbf{Sum} \\
+            \hline
+          \textbf{A}	& 0	 & 0	& 2	& 0	& \cellcolor{yellow}2 \\
+          \textbf{B}	& 32 & 0	& 0	& 0	& 32 \\
+          \textbf{C}	& 0	 & 17	& 0	& 4	& 21 \\
+          \textbf{D}	& 21 & 18	& 0	& 0	& 39 \\
+          \hline
+      \end{tabular}
+    \end{table}
+    Для каждого варианта $A_{i}$ по строке матрицы $H$ находятся варианты $A_{j}$ для которых $H_{i,j} < 1$. Это как раз и будут те варианты, в сравнении с которыми вариант $A_{i}$ получил меньше половины от общего числа голосов.
+    \column{0.4\textwidth}
+
+Подсчитаем недостающие голоса и занесем в таблицу \ref{t4}.
+
+Победителем признан тот, у кого значение функции меньше - проект А.
+
+\textbf{Ранжирование: $A \succ C \succ B \succ D$}
+
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Процедура Кумбса}
+  \begin{columns}
+  \column{0.5\textwidth}
+  \begin{table}
+    \caption{Процедура Кумбса}
+    \label{t5}
+    \begin{tabular}{|c|c|c|c|c|}
+      \hline
+      \textbf{Шаг} & \textbf{A} &\textbf{B} &\textbf{C} &\textbf{D}\\
+      \hline
+      \textbf{1} &	46  & 98  & \cellcolor{yellow}102 & 54\\
+      \textbf{2} &	52  & 110 & -   & \cellcolor{yellow}138\\
+      \textbf{3} &	118 & \cellcolor{yellow}182 &     &\\
+      \hline
+    \end{tabular}
+  \end{table}
+
+  \column{0.5\textwidth}
+  На каждой итерации алгоритма, будем подсчитывать число голосовавших, поставивших каждый вариант на последнее место.
+
+Вариант против которого проголосовало большинство будем исключать.
+
+Будем продолжать до тех пор, пока не останется победитель.
+
+Результаты расчетов находятся в таблице \ref{t5}.
+
+\textbf{Победитель  А}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Результаты}
+  \begin{table}
+    \caption{Результаты процедур}
+    \label{t6}
+    \begin{tabular}{|c|c|}
+      \hline
+      \textbf{Процедура} & \textbf{Результат}\\
+      \hline
+      Модифицированная процедура Борда & $A \succ B \succ C \succ D$\\
+      Процедура Кондорсе (Нет решения)	&   $C \succ A \succ B \succ D \succ C$ \\
+      Процедура Кумбса	  & $A \succ B \succ D \succ C$\\
+      Процедура Доджсона	& $A \succ C \succ B \succ D$\\
+      Процедура Фишберна	& $A = D \succ B =C $\\
+      \hline
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Вывод}
+  \textbf{ЛПР следует выбрать проект А, так как он победил по всем процедурам кроме Процедуры Кондорсе, которая не дала решения, из-за нарушения транзитивности.}
+
+\end{frame}
+
+\end{document}
