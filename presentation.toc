@@ -1,0 +1,3 @@
+\select@language {russian}
+\beamer@sectionintoc {1}{\IeC {\CYRS }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrd } 1}{3}{0}{1}
+\beamer@sectionintoc {2}{\IeC {\CYRS }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrd } 2}{4}{0}{2}
